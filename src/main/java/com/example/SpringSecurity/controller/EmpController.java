@@ -10,10 +10,12 @@ import java.util.List;
 @RestController
 @RequestMapping(path = "/spring")
 public class EmpController {
+
     @Autowired
     private EmpService empService;
 
     @GetMapping(path = "/users")
+
     public List<EmpModel> getAll() {
         return empService.getAll();
     }

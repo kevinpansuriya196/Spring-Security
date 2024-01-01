@@ -2,15 +2,16 @@ package com.example.SpringSecurity.entity;
 
 import jakarta.persistence.*;
 import jdk.jfr.Name;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @Entity
 @Data
 @Table(name = "springsecurity")
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 public class EmpModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
