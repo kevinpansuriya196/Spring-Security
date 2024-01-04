@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @NoArgsConstructor
 @Getter
 @Setter
+@ToString
 public class EmpModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
