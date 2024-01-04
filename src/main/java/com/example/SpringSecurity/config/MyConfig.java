@@ -3,6 +3,8 @@ package com.example.SpringSecurity.config;
 import com.example.SpringSecurity.entity.EmpModel;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration;
@@ -22,12 +24,17 @@ public class MyConfig {
         UserDetails user = User.builder().username("qwe").password(passwordEncoder().encode("qwe")).roles("ADMIN").build();
         UserDetails user1 = User.builder().username("111").password(passwordEncoder().encode("111")).roles("ADMIN").build();
 
-        return new InMemoryUserDetailsManager(user,user1);
+        return new InMemoryUserDetailsManager(user, user1);
     }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration builder) throws Exception {
+        return builder.getAuthenticationManager();
     }
 
 }
